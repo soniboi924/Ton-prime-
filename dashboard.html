@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Earn TON</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { background: #121212; color: #e0e0e0; font-family: 'Poppins', sans-serif; min-height: 100vh; }
+  .card { background: #1e1e1e; padding: 30px; margin: 20px; border-radius: 16px; text-align: center; }
+  .balance { font-size: 36px; color: #4CAF50; }
+  .nav { position: fixed; bottom: 0; width: 100%; background: #1e1e1e; display: flex; justify-content: space-around; padding: 15px 0; }
+  .nav button { background: none; border: none; color: #e0e0e0; font-size: 16px; cursor: pointer; }
+  .flowers { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; font-size: 24px; color: #4CAF50; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Dashboard</h1>
+    <div id="content">Select option below</div>
+  </div>
+
+  <div class="nav">
+    <button onclick="show('balance')">Balance</button>
+    <button onclick="show('task')">Task</button>
+    <button onclick="show('refer')">Refer</button>
+    <button onclick="show('withdraw')">Withdraw</button>
+  </div>
+
+  <div id="flowers" class="flowers">Withdrawal Successful! 🎉 Admin will approve shortly</div>
+
+  <script>
+    function show(section) {
+      const content = document.getElementById('content');
+      if (section === 'balance') {
+        content.innerHTML = '<div class="balance">0.05 TON</div><div>Total Balance</div><div>Task Balance: 0 TON</div>';
+      } else if (section === 'task') {
+        content.innerHTML = '<div>Join channel: <a href="https://t.me/SONIBOIofficial" target="_blank">t.me/SONIBOIofficial</a></div><input type="file" id="proof"><button onclick="alert(\'Proof submitted!\')">Submit Proof</button>';
+      } else if (section === 'refer') {
+        content.innerHTML = '<div>Your Referral Link: https://your-site.com?ref=yourusername</div><div>Invites: 0</div><div>Leaderboard: Coming soon</div>';
+      } else if (section === 'withdraw') {
+        content.innerHTML = '<div class="balance">Balance: 0.05 TON</div><input type="text" placeholder="TON Address"><button onclick="save()">Save</button><button onclick="show(\'balance\')">Cancel</button><button onclick="withdraw()">Withdraw</button>';
+      }
+    }
+
+    function save() { alert('Address saved!'); }
+    function withdraw() {
+      document.getElementById('flowers').style.display = 'flex';
+      setTimeout(() => document.getElementById('flowers').style.display = 'none', 3000);
+    }
+  </script>
+</body>
+  </html>
