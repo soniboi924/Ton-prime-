@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Signup — Earn TON</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { background: #121212; color: #e0e0e0; font-family: 'Poppins', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .form-card { background: #1e1e1e; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 90%; max-width: 400px; text-align: center; }
+  .headline { font-size: 26px; color: #4CAF50; margin-bottom: 20px; }
+  input { width: 100%; padding: 15px; margin: 10px 0; border-radius: 8px; background: #2c2c2c; border: 1px solid #4CAF50; color: #ffffff; font-size: 16px; }
+  button { width: 100%; padding: 15px; background: #ffffff; color: #2E7D32; font-size: 18px; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; }
+  button:hover { background: #f0f0f0; }
+  .bottom-text { margin-top: 20px; font-size: 14px; color: #aaaaaa; }
+</style>
+</head>
+<body>
+  <div class="form-card">
+    <div class="headline">Register to Earn TON</div>
+    <form action="/register" method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="text" name="referral" id="referralInput" placeholder="Referral Code (Optional)">
+      <input type="password" name="password" placeholder="Password (min 6 chars)" required minlength="6">
+      <button type="submit">Register</button>
+    </form>
+    <div class="bottom-text">Dashboard loads after signup!</div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("ref")) {
+      document.getElementById("referralInput").value = params.get("ref");
+    }
+  </script>
+</body>
+  </html>
